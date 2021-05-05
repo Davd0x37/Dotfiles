@@ -3,12 +3,12 @@
 rustup default stable
 rustup target add wasm32-unknown-unknown wasm32-wasi
 
-nvm install node
-npm install -g yarn
+# nvm install node
+# npm install -g yarn
 
-# Pwndbg
-git clone https://github.com/pwndbg/pwndbg
-cd pwndbg && ./setup.sh && cd ..
+# # Pwndbg
+# git clone https://github.com/pwndbg/pwndbg
+# cd pwndbg && ./setup.sh && cd ..
 
 # tools=(
 #   bandwhich                         # Terminal bandwidth utilization tool

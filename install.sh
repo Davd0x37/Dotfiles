@@ -55,13 +55,20 @@ cp .ssh ~ -rf
 sh -c "$(curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs)" -- -y -q
 
 # NVM node
-curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.37.2/install.sh | bash
+# curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.37.2/install.sh | bash
+# FNM
+curl -fsSL https://fnm.vercel.app/install | bash
 
 # Deno
 curl -fsSL https://deno.land/x/install/install.sh | sh
 
 # Add cron job to clean RAM
-printf '*/3 * * * * echo 3 > /proc/sys/vm/drop_caches; touch /root/drop_caches_last_run\n' | crontab
+# printf '*/5 * * * * echo 3 > /proc/sys/vm/drop_caches; touch /root/drop_caches_last_run\n' | crontab
+sudo ./add_crontab.sh
+
+# Check last time of freeing memory
+# sudo stat -c '%y' /root/drop_caches_last_run
+
 # Add cron to sudoers
 printf "%%sudo ALL=NOPASSWD: /etc/init.d/cron start\n" | sudo tee -a /etc/sudoers >/dev/null
 
@@ -77,5 +84,15 @@ git clone https://github.com/zdharma/fast-syntax-highlighting.git ${ZSH_CUSTOM:-
 # git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
 
 # WSL toolbar
-pip3 install wsl-windows-toolbar cairosvg
+# pip3 install wsl-windows-toolbar cairosvg
 # wsl-windows-toolbar -J wsl-windows-toolbar-template.sh.j2
+
+# Oh-My-Posh
+sudo wget https://github.com/JanDeDobbeleer/oh-my-posh/releases/latest/download/posh-linux-amd64 -O /usr/local/bin/oh-my-posh
+sudo chmod +x /usr/local/bin/oh-my-posh
+
+mkdir ~/.poshthemes
+wget https://github.com/JanDeDobbeleer/oh-my-posh/releases/latest/download/themes.zip -O ~/.poshthemes/themes.zip
+unzip ~/.poshthemes/themes.zip -d ~/.poshthemes
+chmod u+rw ~/.poshthemes/*.json
+rm ~/.poshthemes/themes.zip

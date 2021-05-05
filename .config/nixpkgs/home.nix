@@ -43,6 +43,8 @@
     wasm-pack                         # Wasm tool for rust
     # wget                              # Wget
     xsv                               # A fast CSV command line toolkit
+    navi
+    vivaldi
   ];
 
   services.gpg-agent = {
@@ -58,7 +60,7 @@
   };
 
   programs.bat.enable = true;
-  programs.starship.enable = true;
+  # programs.starship.enable = true;
   
   #programs.zsh = {
   #  enable = true;
