@@ -48,6 +48,7 @@ printf "export XDG_DATA_DIRS="/home/david/.nix-profile/share:$XDG_DATA_DIRS"\n" 
 chsh -s /usr/bin/zsh
 
 cp .zshrc ~ -f
+cp .p10k.zsh ~ -f
 # cp .gitconfig ~ -f
 cp .ssh ~ -rf
 
@@ -96,3 +97,6 @@ wget https://github.com/JanDeDobbeleer/oh-my-posh/releases/latest/download/theme
 unzip ~/.poshthemes/themes.zip -d ~/.poshthemes
 chmod u+rw ~/.poshthemes/*.json
 rm ~/.poshthemes/themes.zip
+
+# Powerlevel10k
+git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/powerlevel10k
