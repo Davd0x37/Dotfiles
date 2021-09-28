@@ -41,7 +41,7 @@ cp .config/* ~/.config -rf
 home-manager switch
 
 # Add menu items to profile
-printf "export XDG_DATA_DIRS="/home/david/.nix-profile/share:$XDG_DATA_DIRS"\n" | sudo tee -a ~/.profile >/dev/null
+# printf "export XDG_DATA_DIRS="/home/david/.nix-profile/share:$XDG_DATA_DIRS"\n" | sudo tee -a ~/.profile >/dev/null
 
 # Change shell to zsh
 # sudo chsh -s $(which zsh)
@@ -55,10 +55,8 @@ cp .ssh ~ -rf
 # Rust
 sh -c "$(curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs)" -- -y -q
 
-# NVM node
-# curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.37.2/install.sh | bash
-# FNM
-curl -fsSL https://fnm.vercel.app/install | bash
+# Volta
+curl https://get.volta.sh | bash
 
 # Deno
 curl -fsSL https://deno.land/x/install/install.sh | sh
@@ -73,9 +71,6 @@ sudo ./add_crontab.sh
 # Add cron to sudoers
 printf "%%sudo ALL=NOPASSWD: /etc/init.d/cron start\n" | sudo tee -a /etc/sudoers >/dev/null
 
-# Setup Clion remote server
-wget https://raw.githubusercontent.com/JetBrains/clion-wsl/master/ubuntu_setup_env.sh && bash ubuntu_setup_env.sh
-
 # Oh-my-zsh
 sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" "" --unattended --keep-zshrc
 # Autosuggestions
@@ -83,20 +78,6 @@ git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-m
 # Syntax highlighting
 git clone https://github.com/zdharma/fast-syntax-highlighting.git ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/plugins/fast-syntax-highlighting
 # git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
-
-# WSL toolbar
-# pip3 install wsl-windows-toolbar cairosvg
-# wsl-windows-toolbar -J wsl-windows-toolbar-template.sh.j2
-
-# Oh-My-Posh
-sudo wget https://github.com/JanDeDobbeleer/oh-my-posh/releases/latest/download/posh-linux-amd64 -O /usr/local/bin/oh-my-posh
-sudo chmod +x /usr/local/bin/oh-my-posh
-
-mkdir ~/.poshthemes
-wget https://github.com/JanDeDobbeleer/oh-my-posh/releases/latest/download/themes.zip -O ~/.poshthemes/themes.zip
-unzip ~/.poshthemes/themes.zip -d ~/.poshthemes
-chmod u+rw ~/.poshthemes/*.json
-rm ~/.poshthemes/themes.zip
 
 # Powerlevel10k
 git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/powerlevel10k

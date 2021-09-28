@@ -16,6 +16,8 @@ export PATH=$HOME/.local/bin:$PATH
 export PATH=$HOME/.yarn/bin:$PATH
 export PATH=$HOME/bin:/usr/local/bin:$PATH
 export PATH=$DENO_INSTALL/bin:$PATH
+export VOLTA_HOME="$HOME/.volta"
+export PATH="$VOLTA_HOME/bin:$PATH"
 export ZSH="/home/david/.oh-my-zsh"
 
 ZSH_THEME="powerlevel10k/powerlevel10k"
@@ -50,15 +52,6 @@ alias cat="bat"
 alias l="exa --header --git --classify --long --binary --group --time-style=long-iso --links --all --icons --group-directories-first --sort=name"
 
 #eval "$(oh-my-posh --init --shell zsh --config ~/.poshthemes/slim.omp.json)"
-
-export DISPLAY=$(cat /etc/resolv.conf | grep nameserver | awk '{print $2; exit;}'):0.0 #GWSL
-export DISPLAY=192.168.1.16:0.0 #GWSL
-# export PULSE_SERVER=tcp:$(cat /etc/resolv.conf | grep nameserver | awk '{print $2; exit;}') #GWSL
-export PULSE_SERVER=tcp:192.168.1.16 #GWSL
-export LIBGL_ALWAYS_INDIRECT=1 #GWSL
-
-export VOLTA_HOME="$HOME/.volta"
-export PATH="$VOLTA_HOME/bin:$PATH"
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
