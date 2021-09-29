@@ -24,16 +24,8 @@ ZSH_THEME="powerlevel10k/powerlevel10k"
 
 plugins=(
   git
-  cargo
-  docker
-  docker-compose
-  dotnet
-  gitignore
   gpg-agent
   keychain
-  nvm
-  yarn
-  vscode
   zsh-autosuggestions
   fast-syntax-highlighting
 )
@@ -50,8 +42,6 @@ eval "$(navi widget zsh)"
 alias ..="cd .."
 alias cat="bat"
 alias l="exa --header --git --classify --long --binary --group --time-style=long-iso --links --all --icons --group-directories-first --sort=name"
-
-#eval "$(oh-my-posh --init --shell zsh --config ~/.poshthemes/slim.omp.json)"
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh

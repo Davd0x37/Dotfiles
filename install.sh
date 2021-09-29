@@ -1,9 +1,7 @@
 #!/bin/bash
 
 # Upgrade
-# sudo sed --in-place 's/focal/groovy/g' /etc/apt/sources.list
-sudo dpkg --add-architecture i386
-sudo add-apt-repository -y ppa:leaningtech-dev/cheerp-ppa
+# sudo dpkg --add-architecture i386
 sudo apt-get update && \
 sudo apt-get upgrade -y && \
 sudo apt-get dist-upgrade -y && \
@@ -14,42 +12,19 @@ sudo sync
 
 # Tools
 tools=(
-  kubuntu-desktop
-  xfce4 lightdm
-  wine64 wine32
-  zsh imagemagick
+  zsh
   curl file wget nmap rclone unzip neofetch gpg-agent git httpie keychain
-  cheerp-core gcc g++ gdb clang lldb llvm git python3 python3-pip build-essential
+  gcc g++ gdb clang lldb llvm git python3 python3-pip build-essential
   pkg-config libssl-dev libxcb-composite0-dev libpq-dev software-properties-common
 )
 
 sudo apt install -y ${tools[@]}
 
-# Nix package manager
-sh <(curl -L https://nixos.org/nix/install) --no-daemon
-. /home/david/.nix-profile/etc/profile.d/nix.sh
-
-# Home manager
-nix-channel --add https://github.com/nix-community/home-manager/archive/master.tar.gz home-manager
-nix-channel --update
-nix-shell '<home-manager>' -A install
-
-# Copy home configuration
-cp .config/* ~/.config -rf
-
-# Install manager
-home-manager switch
-
-# Add menu items to profile
-# printf "export XDG_DATA_DIRS="/home/david/.nix-profile/share:$XDG_DATA_DIRS"\n" | sudo tee -a ~/.profile >/dev/null
-
 # Change shell to zsh
-# sudo chsh -s $(which zsh)
 chsh -s /usr/bin/zsh
 
 cp .zshrc ~ -f
 cp .p10k.zsh ~ -f
-# cp .gitconfig ~ -f
 cp .ssh ~ -rf
 
 # Rust
