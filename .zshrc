@@ -8,7 +8,7 @@ fi
 # sudo /etc/init.d/cron start
 [ -z "$(ps -ef | grep cron | grep -v grep)" ] && sudo /etc/init.d/cron start &> /dev/null
 
-. /home/david/.nix-profile/etc/profile.d/nix.sh
+# . /home/david/.nix-profile/etc/profile.d/nix.sh
 
 export DENO_INSTALL="/home/david/.deno"
 export PATH=$HOME/.cargo/bin:$PATH
@@ -36,7 +36,7 @@ plugins=(
 
 source $ZSH/oh-my-zsh.sh
 
-eval "$(navi widget zsh)"
+# eval "$(navi widget zsh)"
 
 # Aliases
 alias ..="cd .."
